@@ -1,1 +1,117 @@
-# ingles
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Modal Example</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            overflow: hidden;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out, background 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #ff758c, #ff3d68);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background: #1e1e2f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 90%;
+            width: 600px;
+        }
+
+        .modal-content video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .close:hover {
+            color: #ff758c;
+        }
+    </style>
+</head>
+<body>
+    <button id="openModal">Precione para abrir</button>
+
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close" id="closeModal">&times;</button>
+            <video controls>
+                <source src="WhatsApp Video 2025-01-19 at 11.34.46 AM.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const openModal = document.getElementById('openModal');
+        const closeModal = document.getElementById('closeModal');
+        const videoModal = document.getElementById('videoModal');
+
+        openModal.addEventListener('click', () => {
+            videoModal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            videoModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
